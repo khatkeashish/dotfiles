@@ -11,11 +11,21 @@ vim.g.maplocalleader = " "
 -- Setup explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+
+-- Lazygit
+-- nnoremap <silent> <leader>gg :LazyGit<CR>
+-- nnoremap("<leader>gg", "<cmd>LazyGit<CR>", { label = "LazyGit" })
+vim.keymap.set('n', '<leader>gg', "<cmd>LazyGit<CR>", { noremap = true, silent = true })
+
+-- vim.api.nvim_set_keymap('n', '<Leader><Space>', ':set hlsearch!<CR>', { noremap = true, silent = true })
+
+
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -59,8 +69,8 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 
 -- Move text up and down
 vim.keymap.set("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
