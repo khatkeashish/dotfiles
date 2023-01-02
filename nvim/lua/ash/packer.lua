@@ -1,4 +1,3 @@
-
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -68,17 +67,40 @@ require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
   -- Fuzzy Finder (files, lsp, etc)
-  --use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
   use({
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-lua/popup.nvim" },
+      { "kdheepak/lazygit.nvim" },
+      { 'nvim-telescope/telescope-project.nvim' },
+      { "cljoly/telescope-repo.nvim" },
+      "jvgrootveld/telescope-zoxide",
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+    },
     config = function()
-        require("telescope").load_extension("lazygit")
+      require("telescope").load_extension("lazygit")
+      require("telescope").load_extension("project")
+      require("telescope").load_extension("repo")
+      require("telescope").load_extension("zoxide")
     end,
-})
+  })
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+  -- Neovim startup screen
+  use {
+    'goolord/alpha-nvim',
+    config = function ()
+      require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
+  }
+
+
+
+
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')

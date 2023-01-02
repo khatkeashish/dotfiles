@@ -1,8 +1,49 @@
+local telescope = require('telescope')
+
+  telescope.setup{
+    defaults = {
+      layout_config = {
+        prompt_position = 'top',
+      },
+      prompt_prefix = '  ',
+      sorting_strategy = 'ascending',
+    },
+    pickers = {
+      find_files = {
+        find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
+        layout_config = {
+          height = 0.70
+        }
+      },
+      -- buffers = {
+      --   show_all_buffers = true
+      -- },
+      -- live_grep = {
+      --   previewer = false,
+      --   theme = "dropdown"
+      -- },
+      git_status = {
+        git_icons = {
+          added = " ",
+          changed = " ",
+          copied = " ",
+          deleted = " ",
+          renamed = "➡",
+          unmerged = " ",
+          untracked = " ",
+        },
+        previewer = false,
+        theme = "dropdown"
+      }
+  }
+}
+
 
 local builtin = require('telescope.builtin')
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+-- pcall(require('telescope').load_extension, 'project')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -27,3 +68,5 @@ vim.keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list gi
 vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
+-- zoxide
+vim.keymap.set("n", "<leader>cd", require("telescope").extensions.zoxide.list)
