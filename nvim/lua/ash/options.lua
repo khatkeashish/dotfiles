@@ -34,3 +34,5 @@ vim.o.completeopt = 'menuone,noselect'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- set clipboad
+vim.o.clipboard="unnamedplus"
