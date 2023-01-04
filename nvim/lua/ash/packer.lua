@@ -92,12 +92,12 @@ require('packer').startup(function(use)
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
     },
-    config = function()
-      require("telescope").load_extension("lazygit")
-      require("telescope").load_extension("project")
-      require("telescope").load_extension("repo")
-      require("telescope").load_extension("zoxide")
-    end,
+    -- config = function()
+    --   require("telescope").load_extension("lazygit")
+    --   require("telescope").load_extension("project")
+    --   require("telescope").load_extension("repo")
+    --   require("telescope").load_extension("zoxide")
+    -- end,
   })
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available

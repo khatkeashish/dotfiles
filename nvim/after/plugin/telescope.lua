@@ -1,48 +1,64 @@
 local telescope = require('telescope')
 
-  telescope.setup{
-    defaults = {
-      layout_config = {
-        prompt_position = 'top',
-      },
-      prompt_prefix = '  ',
-      sorting_strategy = 'ascending',
+telescope.setup{
+  defaults = {
+    layout_config = {
+      prompt_position = 'top',
     },
-    pickers = {
-      find_files = {
-        find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
-        layout_config = {
-          height = 0.70
-        }
-      },
-      -- buffers = {
-      --   show_all_buffers = true
-      -- },
-      -- live_grep = {
-      --   previewer = false,
-      --   theme = "dropdown"
-      -- },
-      git_status = {
-        git_icons = {
-          added = " ",
-          changed = " ",
-          copied = " ",
-          deleted = " ",
-          renamed = "➡",
-          unmerged = " ",
-          untracked = " ",
-        },
-        previewer = false,
-        theme = "dropdown"
+    prompt_prefix = '  ',
+    sorting_strategy = 'ascending',
+  },
+  pickers = {
+    find_files = {
+      find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
+      layout_config = {
+        height = 0.70
       }
-  }
+    },
+    -- buffers = {
+    --   show_all_buffers = true
+    -- },
+    -- live_grep = {
+    --   previewer = false,
+    --   theme = "dropdown"
+    -- },
+    git_status = {
+      git_icons = {
+        added = " ",
+        changed = " ",
+        copied = " ",
+        deleted = " ",
+        renamed = "➡",
+        unmerged = " ",
+        untracked = " ",
+      },
+      previewer = false,
+      theme = "dropdown"
+    },
+  },
+  extensions = {
+    repo = {
+      list = {
+        fd_opts = {
+          "--no-ignore-vcs",
+        },
+        search_dirs = {
+          "~/tw",
+          "~/ak",
+        },
+      },
+    },
+  },
 }
 
 
-local builtin = require('telescope.builtin')
-
 -- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, "fzf")
+pcall(require("telescope").load_extension, "lazygit")
+pcall(require("telescope").load_extension, "project")
+pcall(require("telescope").load_extension, "repo")
+pcall(require("telescope").load_extension, "zoxide")
+
 -- pcall(require('telescope').load_extension, 'project')
 
 -- See `:help telescope.builtin`
