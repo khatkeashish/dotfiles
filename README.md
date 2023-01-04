@@ -1,3 +1,4 @@
 # dotfiles
 
 - Neovim
+- kitty terminal
