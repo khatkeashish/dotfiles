@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- Lazygit
 -- nnoremap <silent> <leader>gg :LazyGit<CR>
 -- nnoremap("<leader>gg", "<cmd>LazyGit<CR>", { label = "LazyGit" })
-vim.keymap.set('n', '<leader>gg', "<cmd>LazyGit<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lg', "<cmd>LazyGit<CR>", { noremap = true, silent = true })
 
 -- vim.api.nvim_set_keymap('n', '<Leader><Space>', ':set hlsearch!<CR>', { noremap = true, silent = true })
 
