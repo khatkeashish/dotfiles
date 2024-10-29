@@ -2,3 +2,4 @@
 
 - Neovim
 - kitty terminal
+- tmux + sessionizer
