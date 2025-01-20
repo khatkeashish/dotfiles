@@ -1,7 +1,7 @@
 return {
   {
-    -- "ThePrimeagen/git-worktree.nvim",
-    "polarmutex/git-worktree.nvim",
+    "ThePrimeagen/git-worktree.nvim",
+    -- "polarmutex/git-worktree.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     enabled = true,
     opts = {
