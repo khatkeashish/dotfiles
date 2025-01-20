@@ -89,11 +89,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -110,15 +110,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-#####################################################################
-
-# brew
-export PATH="/opt/homebrew/bin:$PATH"
-
-# powerlevel10k
-source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
-
+# powerlevel10k theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -147,24 +140,21 @@ eval "$(zoxide init zsh)"
 # nvm, node
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash completion
 
-# pyenv
+# pyenv, python 
 export PYENV_ROOT="$HOME"/.pyenv
 export PATH="$PYENV_ROOT"/bin:"$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi  
+export PYTHONBREAKPOINT="ipdb.set_trace"
+export PYTEST_ADDOPTS='--pdb --pdbcls=IPython.terminal.debugger:Pdb'
 
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-
 ### aliases
-# tmux
-alias tma="tmux a"
-alias tml="tmux ls"
-alias tmn="tmux new -s "
-
 # git
 alias gg=lazygit
 alias gw="git worktree"
@@ -172,4 +162,5 @@ alias gs="git status"
 
 # other
 alias cc=clear
+alias grep=rg
 
