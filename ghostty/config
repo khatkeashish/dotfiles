@@ -1,7 +1,7 @@
 # The syntax is "key = value". The whitespace around the
 # equals doesn't matter.
-background = 222222
-foreground = ffffff
+# background = 222222
+# foreground = ffffff
 
 # Comments start with a `#` and are only valid on their own line.
 # Blank lines are ignored!
@@ -9,3 +9,8 @@ foreground = ffffff
 # Empty values reset the configuration to the default value
 font-size = 20
 
+# theme = gruvbox-material
+theme = rose-pine
+background = 000000
+keybind = cmd+d=new_split:down
+keybind = cmd+shift+d=new_split:right
