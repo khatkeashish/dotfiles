@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ -n "${TMUX-}" ]]; then
+	# Inside tmux → let tmux host the TTY
+	tmux display-popup -E "bash -lc '
+     s=\$(tmux list-sessions -F \"#S\" | sort -u | \
+          fzf --height 60% --reverse --border --prompt \"⚡  \");
+     [ -n \"\$s\" ] && tmux switch-client -t \"\$s\" || true
+   '"
+	exit 0
+fi
+
+# Outside tmux → run fzf normally, then attach/create
+sel="$(
+	tmux list-sessions -F '#S' 2>/dev/null | sort -u |
+		fzf --height 60% --reverse --border --prompt '⚡  '
+)" || exit 0
+[ -z "$sel" ] && exit 0
+exec tmux new -As "$sel"
