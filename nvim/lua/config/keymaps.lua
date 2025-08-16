@@ -34,3 +34,23 @@ end, { expr = true, noremap = true, desc = "Smart d (preserve dd)" })
 
 -- Insert mode: Map jj to escape
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
+-- vim.keymap.set("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
+-- vim.keymap.set("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
+-- vim.keymap.set("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
+
+vim.keymap.set("n", "<C-s>", function()
+  if not os.getenv("TMUX") then
+    vim.notify("Not inside tmux", vim.log.levels.WARN)
+    return
+  end
+  local sh = [[
+    session=$(tmux list-sessions -F '#S' | sort | uniq | \
+      fzf --height 40% --reverse --border --prompt '⚡  ')
+    [ -n "$session" ] && exec tmux switch-client -t "$session" || true
+  ]]
+  vim.fn.jobstart({ "tmux", "new-window", "zsh", "-lc", sh }, { detach = true })
+end, { desc = "tmux: pick session (new window)" })
