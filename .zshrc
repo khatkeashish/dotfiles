@@ -72,6 +72,7 @@ alias gc="git commit -m"
 
 # other
 alias cc=clear
+alias grep=rg
 alias webui="docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main"
 alias remove_pycache="$HOME/work/remove_pycache.py"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
@@ -90,6 +91,9 @@ export PATH="$HOME/.cargo/bin:$PATH" # rust
 export HAYSTACK_TELEMETRY_ENABLED=False
 export LDFLAGS="-L/opt/homebrew/opt/openssl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig"
-
+export PKG_CONFIG_PATexport PYTHONBREAKPOINT="ipdb.set_trace"
+export PYTEST_ADDOPTS='--pdb --pdbcls=IPython.terminal.debugger:Pdb'
+export RAY_DEBUG="legacy"H="/opt/homebrew/opt/openssl/lib/pkgconfig"
+export TMUX_CONF=~/.config/tmux/tmux.conf
+export TMUX_CONF_LOCAL=~/.config/tmux/tmux.conf.local
 
