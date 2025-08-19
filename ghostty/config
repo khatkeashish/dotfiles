@@ -1,5 +1,6 @@
 # The syntax is "key = value". The whitespace around the
 # equals doesn't matter.
+
 # background = 222222
 # foreground = ffffff
 
@@ -12,5 +13,14 @@ font-size = 20
 # theme = gruvbox-material
 theme = rose-pine
 background = 000000
+
+# fix for ghostty option as alt
+macos-option-as-alt = true
+keybind = alt+left=unbind
+keybind = alt+right=unbind
 keybind = cmd+d=new_split:down
 keybind = cmd+shift+d=new_split:right
+
+# No confirmation in closing Ghostty
+confirm-close-surface = false
+

@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: .zshrc
   checksum: 9faa0941b7ff8b994fe970ff7eadc577dc6019eb592f18f969a338f3cd6c4a3f
+- filename: ghostty/config
+  checksum: 17345bd94890c94dec3689b50b83e2c84142a03ac9ffbf844ed7dc104311e635
 version: "1.0"
