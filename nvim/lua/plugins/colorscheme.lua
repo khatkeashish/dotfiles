@@ -13,7 +13,7 @@ return {
   --    end,
   --  },
 
-  -- { "ellisonleao/gruvbox.nvim" },
+  { "ellisonleao/gruvbox.nvim" },
   { "rose-pine/neovim", name = "rose-pine" },
   -- { "rebelot/kanagawa.nvim" },
 

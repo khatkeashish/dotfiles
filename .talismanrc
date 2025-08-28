@@ -3,4 +3,6 @@ fileignoreconfig:
   checksum: 9faa0941b7ff8b994fe970ff7eadc577dc6019eb592f18f969a338f3cd6c4a3f
 - filename: ghostty/config
   checksum: 17345bd94890c94dec3689b50b83e2c84142a03ac9ffbf844ed7dc104311e635
+- filename: nvim/lua/plugins/venv.lua
+  checksum: 5c9c3f8b5d3748f15a3933b2df1131c6feb39951c9270d5cdece69bc67d8a1f8
 version: "1.0"
